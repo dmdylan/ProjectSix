@@ -18,6 +18,7 @@ public class SmoothMouseLook : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         character = this.transform.parent.gameObject;
+        Cursor.lockState = CursorLockMode.Locked;
 	}
 	
 	// Update is called once per frame
