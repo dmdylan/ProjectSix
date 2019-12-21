@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public GameObject[] playerInventory;
+    [SerializeField] List<Item> items;
+    [SerializeField] Transform itemsParent = null;
+    [SerializeField] ItemSlot[] itemSlots;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnValidate()
     {
-        playerInventory = new GameObject[10];
+        if (itemsParent != null)
+            itemSlots = itemsParent.GetComponentsInChildren<ItemSlot>();
+
+        RefreshUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void RefreshUI()
     {
-        
-    }
+        int i = 0;
+        for(; i < items.Count && i < itemSlots.Length; i++)
+        {
+            itemSlots[i].Item = items[i];
+        }
 
-    void AccessTheInventory()
-    {
-
+        for(; i < itemSlots.Length; i++)
+        {
+            itemSlots[i].Item = null;
+        }
     }
 }

@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[System.Serializable]
-public abstract class Item : ScriptableObject
+[CreateAssetMenu]
+public class Item : ScriptableObject
 {
     public string itemName;
-    public Sprite itemImage = null;
+    public Sprite icon;
 }
